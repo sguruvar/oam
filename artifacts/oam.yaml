@@ -1,10 +1,10 @@
 apiVersion: core.oam.dev/v1beta1
 kind: Application
 metadata:
-  name: front-end-app
+  name: front-end
 spec:
   components:
-    - name: front-end-po
+    - name: front-end
       type: webservice
       properties:
         image: public.ecr.aws/u2g6w7p2/eks-workshop-demo/frontend_node:2.0
