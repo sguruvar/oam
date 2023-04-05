@@ -1,0 +1,7 @@
+apiVersion: core.oam.dev/v1beta1
+kind: TraitDefinition
+metadata:
+  name: ingress
+spec:
+  definitionRef:
+    name: ingresses.networking.k8s.io
