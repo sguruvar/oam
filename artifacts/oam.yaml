@@ -1,0 +1,17 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  name: front-end
+spec:
+  components:
+    - name: front-end
+      type: webservice
+      properties:
+        image: nginx
+        port: 80
+      traits:
+        - type: ingress
+          properties:
+            domain: localhost
+            http:
+              "/": 80
