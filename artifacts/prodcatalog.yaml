@@ -1,10 +1,10 @@
 apiVersion: core.oam.dev/v1beta1
 kind: Application
 metadata:
-  name: front-end-app
+  name: prod-catalog-app
 spec:
   components:
-    - name: front-end-po
+    - name: prod-catalog
       type: webservice
       properties:
         image: public.ecr.aws/u2g6w7p2/eks-workshop-demo/product_catalog:1.0
