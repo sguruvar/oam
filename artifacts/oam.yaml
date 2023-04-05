@@ -9,9 +9,3 @@ spec:
       properties:
         image: nginx
         port: 80
-      traits:
-        - type: ingress
-          properties:
-            domain: localhost
-            http:
-              "/": 80
