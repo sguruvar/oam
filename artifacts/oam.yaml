@@ -7,5 +7,5 @@ spec:
     - name: front-end
       type: webservice
       properties:
-        image: nginx
+        image: public.ecr.aws/u2g6w7p2/eks-workshop-demo/frontend_node:2.0
         port: 80
