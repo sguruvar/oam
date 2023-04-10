@@ -16,7 +16,7 @@ spec:
           properties:
             domain: testsvc.example.com
             http:
-              "/": 5000
+              "/products": 5000
         - type: scaler
           properties:
             replicas: 1
