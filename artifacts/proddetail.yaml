@@ -15,7 +15,6 @@ spec:
         - type: gateway
           properties:
             domain: testsvc.example.com
-            class: "traefik"
             http:
               "/": 5000
         - type: scaler
