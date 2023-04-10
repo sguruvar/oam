@@ -1,23 +1,23 @@
 apiVersion: core.oam.dev/v1beta1
 kind: Application
 metadata:
-  name: catalogdetail
+  name: frontend
 spec:
   components:
-    - name: catalogdetail
+    - name: frontend
       type: webservice
       properties:
-        image: "public.ecr.aws/u2g6w7p2/eks-workshop-demo/catalog_detail:1.0"
+        image: "public.ecr.aws/u2g6w7p2/eks-workshop-demo/frontend_node:2.0"
         ports:
-          - port: 3000
+          - port: 9000
             expose: true
         exposeType: NodePort
       traits:
-        - type: gateway                                     
+        - type: gateway
           properties:
             domain: localhost
             http:
-              "/catalogDetail": 3000
+              "/": 9000
         - type: scaler
           properties:
             replicas: 1
