@@ -11,13 +11,7 @@ spec:
         ports:
           - port: 9000
             expose: true
-        exposeType: NodePort
       traits:
-        - type: gateway
-          properties:
-            domain: frontend
-            http:
-              "/": 9000
         - type: scaler
           properties:
             replicas: 1
