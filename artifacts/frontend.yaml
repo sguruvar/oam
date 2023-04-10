@@ -15,7 +15,7 @@ spec:
       traits:
         - type: gateway
           properties:
-            domain: localhost
+            domain: frontend
             http:
               "/": 9000
         - type: scaler
