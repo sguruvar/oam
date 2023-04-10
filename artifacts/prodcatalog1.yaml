@@ -12,11 +12,6 @@ spec:
           - port: 5000
             expose: true
       traits:
-        - type: gateway
-          properties:
-            domain: testsvc.example.com
-            http:
-              "/products": 5000
         - type: scaler
           properties:
             replicas: 1
