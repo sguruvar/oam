@@ -13,6 +13,12 @@ spec:
             expose: true
         exposeType: NodePort
       traits:
+        - type: gateway
+          properties:
+            domain: testsvc.example.com
+            class: "traefik"
+            http:
+              "/": 5000
         - type: scaler
           properties:
             replicas: 1
