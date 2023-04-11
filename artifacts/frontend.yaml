@@ -7,7 +7,7 @@ spec:
     - name: frontend
       type: webservice
       properties:
-        image: "public.ecr.aws/u2g6w7p2/eks-workshop-demo/frontend_node:2.0"
+        image: "public.ecr.aws/m8u2y2m7/oam:frontend"
         ports:
           - port: 9000
             expose: true
