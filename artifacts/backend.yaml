@@ -7,7 +7,7 @@ spec:
     - name: backend
       type: webservice
       properties:
-        image: "public.ecr.aws/m8u2y2m7/oam:backend"
+        image: "public.ecr.aws/m8u2y2m7/oam:backendv1"
         ports:
           - port: 8080
             expose: true
