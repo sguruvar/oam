@@ -7,7 +7,7 @@ spec:
     - name: frontend
       type: webservice
       properties:
-        image: "public.ecr.aws/m8u2y2m7/oam:frontendv4"
+        image: "public.ecr.aws/m8u2y2m7/oam:frontendv5"
         ports:
           - port: 80
             expose: true
