@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>OAM - Guestbook</title>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+
+<body>
+  <h1>OAM - Guestbook</h1>
+  <form id="guestbook-form">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="cdiv" class="cdiv">
+  <table id="entries" align="center" border="2">
+    <tr><th>Name</th><th>Message</th></tr>
+  </table>
+</div>
+  <script>
+    const form = document.querySelector('#guestbook-form');
+    const nameInput = document.querySelector('#name');
+    const messageInput = document.querySelector('#message');
+    const entriesContainer = document.querySelector('#entries');
+    const cdiv = document.querySelector('#cdiv');
+
+    // Function to fetch the guestbook entries from the server
+    async function getEntries() {
+      const response = await fetch('/getentries');
+      const data = await response.json();
+      cdiv.innerHTML=''
+      const tbl = document.createElement('table');
+      const tblBody = document.createElement("tbody");
+      tbl.setAttribute("border","2")
+      tbl.setAttribute("align","center")
+      const row = document.createElement("tr");
+
+const cellh = document.createElement("th");
+const cellTexth = document.createTextNode("Name");
+cellh.appendChild(cellTexth);
+row.appendChild(cellh);
+const cellh1 = document.createElement("th");
+const cellTexth1 = document.createTextNode("Message");
+cellh1.appendChild(cellTexth1);
+row.appendChild(cellh1);
+
+tblBody.appendChild(row);
+      data.forEach(element => {
+        const row = document.createElement("tr");
+
+        const cell = document.createElement("td");
+        const cellText = document.createTextNode(element.name);
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+        const cell1 = document.createElement("td");
+        const cellText1 = document.createTextNode(element.message);
+        cell1.appendChild(cellText1);
+        row.appendChild(cell1);
+
+        tblBody.appendChild(row);
+
+      });
+      tbl.appendChild(tblBody);
+      cdiv.appendChild(tbl);
+
+
+      return data;
+    }
+
+
+    // Function to handle form submission
+    async function handleSubmit(event) {
+      event.preventDefault();
+      const name = nameInput.value;
+      const message = messageInput.value;
+      await fetch('/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, message })
+      });
+      nameInput.value = '';
+      messageInput.value = '';
+
+      const entries = await getEntries();
+      //displayEntries(entries);
+    }
+
+    form.addEventListener('submit', handleSubmit);
+
+    // Fetch the guestbook entries when the page loads
+    getEntries();
+  </script>
+</body>
+
+</html>
