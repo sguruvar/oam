@@ -7,7 +7,7 @@ spec:
     - name: proddetail
       type: webservice
       properties:
-        image: "public.ecr.aws/u2g6w7p2/eks-workshop-demo/catalog_detail:1.0"
+        image: "public.ecr.aws/m8u2y2m7/oam:productdetail"
         ports:
           - port: 3000
             expose: true
