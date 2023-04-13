@@ -26,7 +26,7 @@ var deployCmd = &cobra.Command{
 			},
 			Spec: Spec{
 				Components: []Component{{
-					Name: "backend",
+					Name: appName,
 					Type: "webservice",
 					Properties: ComponentProperties{
 						Image: imagePath,
