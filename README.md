@@ -5,6 +5,7 @@ This is a CLI for Kubevela to generate YAML files
 As of now it supports only WebService and one component. 
 
 ##Usage
+
 If you want to use the tool, download the binary `oamctl` from this repo and you can try like below
 `oamctl create deploy --appName="backend" --imagePath="github.com/sg09/oam:backendv1" --port=8080 --replicas=1`
 
