@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oamtraitcrd
+  labels:
+    crd: oamtraitcrd
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      crd: oamtraitcrd
+  template:
+    metadata:
+      labels:
+        crd: oamtraitcrd
+    spec:
+      containers:
+      - name: oamtraitcrd
+        image: "public.ecr.aws/m8u2y2m7/oam:oamtraitcrd"

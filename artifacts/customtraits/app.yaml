@@ -1,0 +1,28 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  name: app
+spec:
+  components:
+    - name: frontend
+      type: my-comp
+      properties:
+        name: frontend
+        image: "public.ecr.aws/m8u2y2m7/oam:frontendv7"
+        port: 3000
+      traits:
+      - type: autoscaler
+        properties:
+          min: 3
+      - type: ingtrait
+    - name: backend
+      type: my-comp
+      properties:
+        name: backend
+        image: "public.ecr.aws/m8u2y2m7/oam:backendv1"
+        port: 8080
+      traits:
+      - type: autoscaler
+        properties:
+          min: 3  
+    
