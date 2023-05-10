@@ -1,0 +1,23 @@
+Trait:
+  name: string
+  deployment:
+    name: name
+    replicas: 3
+    image: image
+    port: 80
+    namespace: string
+    annotations: {}
+  service:
+    name: string
+    type: string
+    port: 80
+    annotations: {}
+  hpa:
+    name: string
+    min_replicas: 1
+    max_replicas: 5
+    cpu_target: string
+  ingress:
+    name: string
+    rules: []
+    annotations: {}

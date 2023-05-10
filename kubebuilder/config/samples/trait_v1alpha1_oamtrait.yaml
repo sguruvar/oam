@@ -1,0 +1,12 @@
+apiVersion: trait.oam.vela/v1alpha1
+kind: OamTrait
+metadata:
+  labels:
+    app.kubernetes.io/name: oamtrait
+    app.kubernetes.io/instance: oamtrait-sample
+    app.kubernetes.io/part-of: kubebuilder
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: kubebuilder
+  name: oamtrait-sample
+spec:
+  # TODO(user): Add fields here

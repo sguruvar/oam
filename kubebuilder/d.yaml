@@ -1,0 +1,13 @@
+apiVersion: trait.oam.vela/v1alpha1
+kind: OamTrait
+metadata:
+  name: "oami13"
+  namespace: "default"
+spec:
+  name: "traitname"
+  replicas: 3
+  image: "nginx"
+  port: 80
+  max_replicas: 5
+  cpu_target: 80
+  

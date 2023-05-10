@@ -1,0 +1,14 @@
+apiVersion: trait.oam.vela/v1alpha1
+kind: OamTrait
+metadata:
+  name: "frontendcrd"
+  namespace: "default"
+spec:
+  name: "frontendcrd"
+  replicas: 1
+  image: "public.ecr.aws/m8u2y2m7/oam:frontendv7"
+  port: 3000
+  max_replicas: 2
+  cpu_target: 80
+  expose_ingress: "yes"
+  
