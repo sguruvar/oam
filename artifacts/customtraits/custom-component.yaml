@@ -1,9 +1,9 @@
 apiVersion: core.oam.dev/v1beta1
 kind: ComponentDefinition
 metadata:
-  name: my-comp
+  name: microservice
   annotations:
-    definition.oam.dev/description: "It's my component"
+    definition.oam.dev/description: "Custom component for K8S Deployment and Service"
 spec:
   workload:
     definition:
@@ -43,8 +43,8 @@ spec:
             image: string
             cmd?: [...string]
             port:     *3000 | int
-            env_name: string
-            env_value: string
+            env_name: *"APP_URL" | string
+            env_value: *"localhost" | string
         }
         outputs: "service": {
         	apiVersion: "v1"

@@ -1,45 +1,37 @@
 apiVersion: core.oam.dev/v1beta1
 kind: Application
 metadata:
-  name: app
+  name: eks-workshop-app
 spec:
   components:
-    - name: proddetail
-      type: my-comp
+    - name: proddtl-backend
+      type: microservice
       properties:
-        name: proddetail
+        name: proddtl-backend
         image: "public.ecr.aws/u2g6w7p2/eks-workshop-demo/catalog_detail:1.0"
         port: 3000
-        env_name: "APPLICATION_URL"
-        env_value: "http://prodcatalog:5000/prodCatalog"
       traits:
       - type: autoscaler
-        properties:
-          min: 1
-    - name: prodcatalog
-      type: my-comp
+    - name: prodcatalog-backend
+      type: microservice
       properties:
-        name: prodcatalog
+        name: prodcatalog-backend
         image: "public.ecr.aws/u2g6w7p2/eks-workshop-demo/product_catalog:1.0"
         port: 5000
         env_name: AGG_APP_URL
-        env_value: " http://proddetail:3000/catalogDetail"
+        env_value: "http://proddtl-backend:3000/catalogDetail"
       traits:
       - type: autoscaler
-        properties:
-          min: 1
-    - name: frontend
-      type: my-comp
+    - name: prodcatalog-frontend
+      type: microservice
       properties:
-        name: frontend
+        name: prodcatalog-frontend
         image: "public.ecr.aws/u2g6w7p2/eks-workshop-demo/frontend_node:2.0"
         port: 9000
         env_name: BASE_URL
-        env_value: "http://prodcatalog:5000/products/"
+        env_value: "http://prodcatalog-backend:5000/products/"
       traits:
       - type: autoscaler
-        properties:
-          min: 1      
-      - type: ingtrait
+      - type: aws-alb-ingress
     
     

@@ -4,7 +4,7 @@ metadata:
   name: autoscaler
 spec:
   appliesToWorkloads:
-    - "my-comp"
+    - "microservice"
   schematic:
     cue:
       template: |
@@ -33,7 +33,7 @@ spec:
             }
         }
         parameter: {
-            min:     *2 | int
+            min:     *1 | int
             max:     *6 | int
             cpuUtil: *80 | int
         }

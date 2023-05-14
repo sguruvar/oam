@@ -1,28 +1,31 @@
 apiVersion: core.oam.dev/v1beta1
 kind: Application
 metadata:
-  name: app
+  name: oam-guestbook-app
 spec:
   components:
     - name: frontend
-      type: my-comp
+      type: microservice
       properties:
         name: frontend
         image: "public.ecr.aws/m8u2y2m7/oam:frontendv7"
         port: 3000
+        env_name: APP_URL
+        env_value: "http://backend:8080"
       traits:
       - type: autoscaler
         properties:
-          min: 3
-      - type: ingtrait
+          min: 2
+      - type: aws-alb-ingress
+        properties:
+          port: 3000
     - name: backend
-      type: my-comp
+      type: microservice
       properties:
         name: backend
         image: "public.ecr.aws/m8u2y2m7/oam:backendv1"
         port: 8080
       traits:
       - type: autoscaler
-        properties:
-          min: 3  
+  
     
