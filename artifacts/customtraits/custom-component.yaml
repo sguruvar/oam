@@ -30,6 +30,10 @@ spec:
                             if parameter["cmd"] != _|_ {
                                 command: parameter.cmd
                             }
+                            env: [{
+                                name: parameter.env_name
+                                value: parameter.env_value
+                            }]
                         }]
                     }
                 }
@@ -39,6 +43,8 @@ spec:
             image: string
             cmd?: [...string]
             port:     *3000 | int
+            env_name: string
+            env_value: string
         }
         outputs: "service": {
         	apiVersion: "v1"

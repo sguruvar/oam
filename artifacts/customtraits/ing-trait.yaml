@@ -35,5 +35,5 @@ spec:
             }    
         }
         parameter: {
-            port:   *3000 | int
+            port:   *9000 | int
         }    
